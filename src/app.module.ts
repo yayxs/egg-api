@@ -10,7 +10,20 @@ import { AppService } from './app.service';
 // entitys
 // import { User } from './users/users.entity';
 @Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule, AuthModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '49.235.67.92',
+      port: 3306,
+      username: 'root',
+      password: 'Vast2022.',
+      database: 'vast_h5_temp',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: false,
+    }),
+    UsersModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
